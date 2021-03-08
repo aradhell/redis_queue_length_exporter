@@ -1,30 +1,13 @@
-{  
-   "queue_type":{  
-      "success_request":[  
-        "nginx_queue",
-        "apache_queue"
-      ],
-      "error_request":[  
-        "error_nginx_queue",
-        "error_apache_queue"
-      ],
-      "event_tracker":[  
-        "click_queue",
-        "read_queue"
-      ],
-      "failed_event":[
-        "failed_queue1",
-        "failed_queue2"
+{
+   "queue_type":{
+      "normalization":[
+        "feed-normalisation-queue:Tradetracker",
+        "update-elastic-search"
       ]
    },
-   "hosts":{  
-      "host1.example.com:6379":[
-        "success_request",
-        "event_tracker"
-      ], 
-      "host2.example.com:6379":[
-        "error_request",
-        "failed_events"
-      ]    
+   "hosts":{
+      "bowtie-production.4rkftv.0001.euc1.cache.amazonaws.com:6379":[
+        "normalization"
+      ]
    }
 }

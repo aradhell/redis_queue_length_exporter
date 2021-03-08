@@ -16,16 +16,16 @@ def generate():
         r = redis.Redis(host=s[0], port=s[1])
 
         try:
-            r.ping()            
+            r.ping()
         except redis.ConnectionError:
             print("Cannot make connection to " +s[0]+":"+s[1])
             continue
 
         for q in q_type:
             qlist = data['queue_type'][q]
-        
+
             for qname in qlist:
-                a = r.llen(qname)
+                a = r.get("queue:length:" + qname)
                 g.labels(h,qname,q).set(a)
 
 
